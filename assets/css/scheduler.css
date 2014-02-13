@@ -1,0 +1,325 @@
+#libcal_web {
+	display: none;
+}
+
+#lc_app_body {
+	margin:0px;
+	padding:0px;
+	background-color: #f2f2f2;
+}
+
+/* Widget Button code*/
+.lc_app_btn, #lc_app_btn{
+
+    color: #FFFFFF;
+    cursor: pointer;
+    position: fixed;
+    text-indent: -100000px;
+    overflow: hidden;
+    width: 34px;
+    z-index: 100000;
+
+}
+.lc_app_btn_l { left: 0;  margin-left: -7px;}
+.lc_app_btn_l:hover { margin-left: -4px !important; }
+
+.lc_app_btn_r { right: -7px;}
+.lc_app_btn_r:hover { margin-right: 2px !important; }
+
+/* Widget Overlay code*/
+#lc_app_overlay, .lc_app_overlay{
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 300%;
+	background-color: black;
+	z-index:1001;
+	-moz-opacity: 0.2;
+	opacity:.20;
+	filter: alpha(opacity=20);
+}
+
+#lc_app_popup, .lc_app_popup{
+	display: none;
+	position: fixed;
+	top: 20%;
+	left: 26%;
+	padding: 0px;
+	margin: 0px;
+
+    width: 900px;
+    height:500px;
+
+	border: 8px solid #7EABCD;
+	background-color: #eee;
+	z-index:1002;
+	overflow: auto;
+
+	/*--CSS3 Box Shadows--*/
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	/*--CSS3 Rounded Corners--*/
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+
+}
+
+#lc_app_popup_head, .lc_app_popup_head {
+      padding: 1px 0px 1px 0.3em;
+      font-weight: bold; height:20px; 
+      border-bottom-width: 0;
+	  font-family: Arial, Helvetica, sans-serif; font-size:11px;
+
+    }
+#lc_app_popup_head span, .lc_app_popup_head  span{
+        float:right; height:20px; width: 25px; cursor:pointer; 
+		background: url('http://lcimages.s3.amazonaws.com/close-white-square.gif') no-repeat top right;
+}
+
+#lc_app_content, .lc_app_content {
+	padding:0px;
+    margin:0px;
+	height:93%;
+    overflow:hidden;
+}
+
+#lc_app_fr, .lc_app_fr {
+	border: none; display: block; width:100%; height: 100%; overflow-x:hidden;
+}
+
+/* Inside the Widget: Calendar styles */
+
+.lc_app_b { 
+	background-color: #cccccc; 
+	padding: 0px; 
+	margin: 0px; 
+	background-image: url('http://lcimages.s3.amazonaws.com/hour-cell.gif'); 
+}
+.lc_app_a { 
+	background-color: #22b14c; 
+	padding: 0px; 
+	margin: 0px; 
+	background-image: url('http://lcimages.s3.amazonaws.com/hour-cell.gif'); 
+	cursor: pointer; 
+}
+.lc_app_a:hover { background-color: #cdee6a; }
+
+.lc_app_hoursCol {
+	font-family: arial, verdana;
+	float:left;
+	width:28px;
+	font-size:9px;
+	color:#4e4e4e;
+	text-align:right;
+	padding: 5px 2px 0px 0px;
+	white-space: nowrap;
+	overflow:hidden;
+}
+.lc_app_weekCal td{
+	width:21px;
+	font-size:1px;
+	vertical-align:top;
+}
+
+.lc_app_week_header {
+	padding-left:32px;
+}
+.lc_app_weekCal th {
+	font-family: arial, verdana;
+	font-size:9px;
+	color:#000;
+	width:21px;
+	text-align:center;
+	padding: 0px; 	
+	
+}
+
+.lc_app_weekCal th span {
+	font-size:8px;
+	color:#4e4e4e;
+	line-height: 1em;					
+}
+.lc_app_weekCalHead {
+	height:16px;
+	width:190px;
+	padding:5px 0px;
+	margin-left: 10px;
+	background-color:#FFFFFF;
+}
+.lc_app_weekCalHeadDate {
+	text-align: center;
+	font-family: arial,verdana;
+	font-weight: bold;
+	color: #000000;
+	white-space: nowrap;
+	font-size: 12px;
+	height: 16px;
+}
+#lc_app_weekB, #lc_app_weekF {
+	width:13px;
+	height:12px;
+	cursor:pointer;
+}
+
+#lc_app_weekB {
+	background:url('http://lcimages.s3.amazonaws.com/app-weeknav.gif') no-repeat 0px 0px;
+}
+
+#lc_app_weekF {
+	background:url('http://lcimages.s3.amazonaws.com/app-weeknav.gif') no-repeat -15px 0px;
+}	
+#lc_app_availbox {
+	font-size: 14px;
+	font-family: verdana;
+	color: #4e4e4e;
+	margin-left: 30px;
+	padding-left: 10px;
+}
+#lc_app_availbox div{
+	background-color: #22b14c;
+	height: 12px;
+	width: 12px;
+	float: left;
+	margin: 5px 5px;
+}
+#lc_app_calendar{
+	float: left;
+	padding: 5px 5px 5px 5px;
+	border: 1px solid #7EABCD;
+	width: 210px;
+	height: 330px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background-color: #fff;
+	
+}	
+#lc_app_desc{
+	float: right;
+	padding: 5px;
+	margin: 0px;
+	border: 1px solid #7EABCD;
+	width: 400px;
+	height: 330px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font: 12px/1.5em Arial;
+	background-color: #fff;
+}		
+#lc_app_container{
+	width: 740px;
+	margin: 20px auto;
+	position: relative;
+}		
+.lc_app_clear{
+	clear: both;
+	height: 1px;
+}	
+#lc_app_h1{
+	font: bold 24px Arial, Helvetica, sans-serif; 
+	color:#333; 
+	margin:0px; 
+	padding: 0px 0px 15px 0px;
+	text-align: center;
+}
+#lc_app_regform{
+	float: left;
+	display: none;
+	border: 1px solid #7EABCD;
+	width: 216px;
+	height: 330px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background-color: #fff;	
+	font-family:arial;
+	background-color: #7EABCD;					
+}
+#lc_app_formarea{
+	height: 250px; 
+	overflow-x: hidden; 
+	overflow-y: scroll; 
+	width: 216px; 
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background-color: #fff;
+}
+#lc_app_reqtext {
+	color: #999; 
+	padding-left: 65px;
+	height: 12px;
+	font-size:11px;
+}
+#lc_app_date{ 
+	font-size:12px;
+	font-weight:bold; 
+	text-align: center;
+	padding: 2px 15px 4px 15px;
+	overflow-x: hidden; 
+	overflow-y: auto; 
+	height: 46px;
+}
+.lc_app_field {clear:both;}
+.lc_app_field .lc_app_input {
+	float:left;
+	color:#212121;
+	font-size:12px;
+	width:180px;
+	padding: 0px 2px;
+	border: 1px solid #7EABCD;
+}
+.lc_app_field .lc_app_input:focus {
+	background-color: #E8F5FF;
+}				
+.lc_app_field label {
+	width:200px;
+	padding: 5px 0px 2px 10px;	
+	color:#000;	
+	float:left;
+	font-size:11px;
+	font-weight:bold;
+	display:block;
+}
+
+#lc_app_submit, #lc_app_back, #lc_app_back_r{
+	background-color: #CDEE6A;
+	color: #000;
+	font-size:12px;
+	margin: 3px 0px 0px 5px;
+	padding: 2px 1px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	display: inline;
+	cursor: pointer;
+}
+#lc_app_back_r{
+	margin: 40px 0px 0px 46px;
+}
+
+#lc_app_success{
+	display: none;
+	font-size:12px;
+	font-weight:bold;
+	color: #000;
+	width: 200px;
+	padding: 10px;
+	margin-top: 90px;
+}
+#lc_app_loading{
+	display: none; 
+	z-index:1000; 
+	position: absolute; 
+	top: 205px; 
+	left:103px; 
+	height: 16px; 
+	width: 17px; 
+	padding: 2px; 
+	background-color: #fff;
+}

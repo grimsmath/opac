@@ -1,0 +1,78 @@
+property earlyHour : 8 -- Hour of the day to re activate apps
+property lateHour : 23 -- Hour of the day to start monitoring idle
+property idleTest : 180 -- How long to be idle (in seconds) before activating script
+
+on idle_time()
+  -- this is the crucial line that I don't claim credit for
+  set idleTime to (do shell script "ioreg -c IOHIDSystem | perl -ane 'if (/Idle/) {$idle=(pop @F)/1000000000; print $idle,\"\";last}'")
+  return idleTime
+end idle_time
+
+script should_quit
+  set idleComp to false
+  -- this repeat loop polls the idle time every 30 seconds to determine
+  -- whether the system has been idle for the number of seconds defined above.
+  -- It will repeat indefinitely until the idle time is acheived
+  -- whereupon the action is performed
+  repeat while idleComp is false
+    set idleTime to idle_time() of parent
+    set old_delims to AppleScript's text item delimiters
+    set AppleScript's text item delimiters to "."
+    set idleTime to ((first text item of idleTime as string) as integer)
+    set AppleScript's text item delimiters to old_delims
+    set idleTest to (idleTest as integer)
+    if idleTime is greater than idleTest then
+      set idleComp to true
+      try
+        -- put your sleep actions in here
+        ignoring application responses
+          tell application "Google Chrome"
+            activate
+            set theUrl to "http://frost.unfcsd.unf.edu/opac"
+
+            if (count every window) = 0 then
+              make new window
+            end if
+
+            set found to false
+            set theTabIndex to -1
+            repeat with theWindow in every window
+              set theTabIndex to 0
+              repeat with theTab in every tab of theWindow
+                set theTabIndex to theTabIndex + 1
+                if theTab's URL = theUrl then
+                  set found to true
+                  exit
+                end if
+              end repeat
+
+              if found then
+                exit repeat
+              end if
+            end repeat
+
+            if found then
+              tell theTab to reload
+              set theWindow's active tab index to theTabIndex
+              set index of theWindow to 1
+            else
+              tell window 1 to make new tab with properties {URL:theUrl}
+            end if
+          end tell
+        end ignoring
+      end try
+    else
+      delay 30
+    end if
+  end repeat
+end script
+
+tell application "System Events"
+  set theHour to (time of (current date)) div hours
+  if theHour is greater than (earlyHour - 1) and theHour is less than lateHour then
+    -- put your wakeup actions in here
+    launch application "Mail"
+  else
+    tell should_quit to run
+  end if
+end tell
